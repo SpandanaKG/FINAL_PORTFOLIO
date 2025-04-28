@@ -1,18 +1,16 @@
-// Typing effect for "I'm Spandana"
 document.addEventListener('DOMContentLoaded', () => {
   const text = "I'm Spandana";
   const h1 = document.querySelector('h1');
   let index = 0;
   h1.textContent = '';
-  
+
   function typeWriter() {
-    if (index < text.length) {
-      h1.textContent += text.charAt(index);
-      index++;
+    h1.textContent = text.slice(0, index);
+    index++;
+    if (index <= text.length) {
       setTimeout(typeWriter, 150);
     } else {
       setTimeout(() => {
-        h1.textContent = '';
         index = 0;
         typeWriter();
       }, 2000);
@@ -21,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   typeWriter();
 });
+
 
 // Show sections on scroll
 function isInViewport(el) {
